@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowPro Plumbing — Premium Pretoria Plumbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #070a13;
+    --bg2: #0e1322;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --white: #ffffff;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: #60a5fa;
+    --primary-dark: #1d4ed8;
+    --emerg-bg: #dc2626;
+    --emerg-num-bg: rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(7, 10, 19, 0.75);
+    --card-bg: #131926;
+    --card-hover-border: #3b82f6;
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --success: #10b981;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body.light-mode {
+    --bg: #f8fafc;
+    --bg2: #f1f5f9;
+    --border: rgba(15, 23, 42, 0.08);
+    --text: #0f172a;
+    --muted: #64748b;
+    --white: #0f172a;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e3a8a;
+    --emerg-bg: #b91c1c;
+    --emerg-num-bg: rgba(0, 0, 0, 0.06);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --card-bg: #ffffff;
+    --card-hover-border: #2563eb;
+    --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+    --success: #059669;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6; 
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* ── Emergency bar ── */
+  .emerg {
+    background: var(--emerg-bg);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+    z-index: 101;
+    transition: var(--transition);
+  }
+  .emerg-num {
+    background: var(--emerg-num-bg);
+    border-radius: 6px;
+    padding: 4px 14px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .03em;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    animation: pulse-glow 2s infinite;
+  }
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  }
+
+  /* ── Nav ── */
+  nav {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+  }
+  .logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 20px; 
+    font-weight: 800; 
+    color: var(--white); 
+    text-decoration: none; 
+    letter-spacing: -0.02em;
+  }
+  .logo-icon { 
+    width: 38px; 
+    height: 38px; 
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); 
+    border-radius: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  }
+  .logo-icon i { font-size: 20px; color: #fff; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--white); }
+  
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: var(--transition);
+  }
+  .theme-toggle-btn:hover {
+    background: var(--bg2);
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+  }
+  body.light-mode .theme-toggle-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .nav-cta { 
+    background: var(--primary) !important; 
+    color: #fff !important; 
+    border-radius: 8px; 
+    padding: 10px 20px !important; 
+    font-size: 14px !important; 
+    font-weight: 600 !important; 
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    transition: var(--transition) !important;
+  }
+  .nav-cta:hover { 
+    background: var(--primary-hover) !important; 
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
+  }
+  .hamburger { display: none; background: none; border: none; color: var(--text); cursor: pointer; font-size: 24px; }
+  .mobile-menu { display: none; flex-direction: column; gap: 0; background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .mobile-menu a { color: var(--muted); font-size: 15px; font-weight: 500; text-decoration: none; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu.open { display: flex; }
+
+  /* ── Hero ── */
+  .hero { padding: 120px 40px 100px; background: var(--bg); position: relative; overflow: hidden; }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: .4;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--primary-light); border-radius: 20px; padding: 6px 16px;
+    font-size: 12px; font-weight: 600; margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+  body.light-mode .badge {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.06);
+    border-color: rgba(37, 99, 235, 0.15);
+  }
+  .hero h1 { 
+    font-size: 58px; 
+    font-weight: 800; 
+    line-height: 1.1; 
+    color: var(--white); 
+    margin-bottom: 24px; 
+    letter-spacing: -.03em; 
+  }
+  .hero h1 em { 
+    font-style: normal; 
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  body.light-mode .hero h1 em {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub { 
+    font-size: 18px; 
+    color: var(--muted); 
+    line-height: 1.7; 
+    margin-bottom: 40px; 
+    max-width: 580px; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+  .btn-p { 
+    background: var(--primary); 
+    color: #fff; 
+    border: none; 
+    border-radius: 12px; 
+    padding: 16px 32px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    text-decoration: none; 
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+  }
+  .btn-p:hover { 
+    background: var(--primary-hover); 
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+  }
+  .btn-p:disabled {
+    background: var(--muted);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+  }
+  .btn-s { 
+    background: transparent; 
+    color: var(--text); 
+    border: 1px solid var(--border); 
+    border-radius: 12px; 
+    padding: 16px 32px; 
+    font-size: 15px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    text-decoration: none; 
+    transition: var(--transition); 
+  }
+  .btn-s:hover { 
+    border-color: var(--primary-light); 
+    background: rgba(59, 130, 246, 0.02);
+    transform: translateY(-2px);
+  }
+  body.light-mode .btn-s:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.02);
+  }
+  
+  .trust-strip { 
+    display: flex; 
+    justify-content: center; 
+    border: 1px solid var(--border); 
+    border-radius: 18px; 
+    overflow: hidden; 
+    background: var(--card-bg); 
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  .trust-item { flex: 1; padding: 24px 16px; text-align: center; border-right: 1px solid var(--border); transition: background 0.2s ease; }
+  .trust-item:hover { background: rgba(59, 130, 246, 0.02); }
+  .trust-item:last-child { border-right: none; }
+  .trust-num { font-size: 28px; font-weight: 700; color: var(--primary-light); }
+  body.light-mode .trust-num { color: var(--primary); }
+  .trust-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+
+  /* ── Why ── */
+  .why { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); }
+  .section-chip { 
+    display: inline-block; 
+    background: rgba(59, 130, 246, 0.08); 
+    color: var(--primary-light); 
+    border: 1px solid rgba(59, 130, 246, 0.2); 
+    border-radius: 20px; 
+    padding: 6px 16px; 
+    font-size: 12px; 
+    font-weight: 600; 
+    margin-bottom: 16px; 
+    letter-spacing: 0.02em;
+  }
+  body.light-mode .section-chip {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.15);
+  }
+  .section-h { font-size: 38px; font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -.02em; }
+  .section-p { font-size: 16px; color: var(--muted); margin-bottom: 48px; line-height: 1.7; max-width: 600px; }
+  .inner { max-width: 960px; margin: 0 auto; }
+  .why-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+  }
+  .why-card { 
+    background: var(--card-bg); 
+    padding: 36px 28px; 
+    border: 1px solid var(--border); 
+    border-radius: 18px; 
+    box-shadow: var(--shadow); 
+    transition: var(--transition);
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-hover-border);
+  }
+  .why-num { 
+    font-size: 40px; 
+    font-weight: 800; 
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: .9; 
+    margin-bottom: 16px; 
+    line-height: 1; 
+  }
+  body.light-mode .why-num {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .why-card h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .why-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ── Services ── */
+  .services { padding: 100px 40px; background: var(--bg); border-top: 1px solid var(--border); transition: var(--transition); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .svc { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    border-radius: 18px; 
+    padding: 36px 28px; 
+    box-shadow: var(--shadow);
+    transition: var(--transition); 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .svc:hover { 
+    transform: translateY(-4px); 
+    border-color: var(--card-hover-border); 
+    box-shadow: 0 12px 24px -10px rgba(59, 130, 246, 0.15);
+  }
+  .svc-dot { 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    background: var(--primary-light); 
+    margin-bottom: 20px; 
+    box-shadow: 0 0 10px var(--primary-light);
+  }
+  body.light-mode .svc-dot {
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+  }
+  .svc h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .svc p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+  .svc-tag { display: inline-block; margin-top: auto; padding-top: 14px; }
+  .svc-tag-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary-light);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+  body.light-mode .svc-tag-badge {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.15);
+  }
+
+  /* ── Process ── */
+  .process { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .step { 
+    padding: 36px 24px; 
+    text-align: center; 
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  .step:hover {
+    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+  }
+  .step-circle { 
+    width: 52px; 
+    height: 52px; 
+    border-radius: 50%; 
+    background: rgba(59, 130, 246, 0.1); 
+    border: 1px solid rgba(59, 130, 246, 0.3); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto 20px; 
+    font-size: 17px; 
+    font-weight: 700; 
+    color: var(--primary-light); 
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.1);
+  }
+  body.light-mode .step-circle {
+    color: var(--primary);
+    border-color: rgba(37, 99, 235, 0.3);
+    background: rgba(37, 99, 235, 0.05);
+  }
+  .step h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── Form Wizard & Estimator ── */
+  .form-section { padding: 100px 40px; background: var(--bg); border-top: 1px solid var(--border); transition: var(--transition); }
+  .form-section .section-h, .form-section .section-p { text-align: center; }
+  .form-section .section-p { margin-left: auto; margin-right: auto; }
+  
+  .form-layout { 
+    display: grid; 
+    grid-template-columns: 1.15fr 0.85fr; 
+    gap: 60px; 
+    max-width: 960px; 
+    margin: 48px auto 0; 
+    align-items: start; 
+  }
+  .form-left h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 16px; letter-spacing: -.02em; }
+  .form-left > p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+  .form-promise { display: flex; flex-direction: column; gap: 14px; }
+  .promise-row { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text); font-weight: 500; }
+  .promise-row i { font-size: 20px; color: var(--primary-light); flex-shrink: 0; }
+  body.light-mode .promise-row i { color: var(--primary); }
+  
+  .form-box { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    border-radius: 20px; 
+    padding: 32px; 
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  
+  /* Wizard Step Progress */
+  .step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding: 0 10px;
+  }
+  .step-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    transition: var(--transition);
+    z-index: 2;
+  }
+  .step-dot.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+  }
+  .step-dot.completed {
+    border-color: var(--success);
+    background: var(--success);
+    color: #fff;
+  }
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background: var(--border);
+    margin: 0 10px;
+    z-index: 1;
+    transition: var(--transition);
+  }
+  .step-line.active {
+    background: var(--primary);
+  }
+
+  .wizard-step {
+    display: none;
+    animation: stepFadeIn 0.4s ease forwards;
+  }
+  .wizard-step.active {
+    display: block;
+  }
+  @keyframes stepFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .wizard-step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  /* Service Grid Choices */
+  .service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .svc-card {
+    cursor: pointer;
+    display: block;
+    position: relative;
+  }
+  .svc-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .svc-card-content {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .svc-card-content i {
+    font-size: 24px;
+    color: var(--primary-light);
+    margin-bottom: 8px;
+    transition: transform 0.25s ease;
+  }
+  body.light-mode .svc-card-content i {
+    color: var(--primary);
+  }
+  .svc-card-content .svc-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .svc-card-content .svc-desc {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .svc-card input:checked + .svc-card-content {
+    border-color: var(--card-hover-border);
+    box-shadow: 0 0 0 1px var(--card-hover-border), 0 4px 12px rgba(59, 130, 246, 0.15);
+    background: rgba(59, 130, 246, 0.05);
+  }
+  .svc-card:hover .svc-card-content {
+    border-color: var(--card-hover-border);
+  }
+  .svc-card:hover .svc-card-content i {
+    transform: translateY(-2px);
+  }
+
+  /* Urgency List Choices */
+  .urgency-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .urgency-option {
+    cursor: pointer;
+    position: relative;
+    display: block;
+  }
+  .urgency-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .urgency-content {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: var(--transition);
+  }
+  .urgency-badge {
+    align-self: flex-start;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .urgency-badge.emerg {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+  }
+  body.light-mode .urgency-badge.emerg {
+    background: #fee2e2;
+    color: #ef4444;
+  }
+  .urgency-badge.sameday {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+  }
+  body.light-mode .urgency-badge.sameday {
+    background: #dbeafe;
+    color: #2563eb;
+  }
+  .urgency-badge.booked {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+  }
+  body.light-mode .urgency-badge.booked {
+    background: #d1fae5;
+    color: #059669;
+  }
+  .urgency-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .urgency-desc {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .urgency-option input:checked + .urgency-content {
+    border-color: var(--card-hover-border);
+    box-shadow: 0 0 0 1px var(--card-hover-border), 0 4px 12px rgba(59, 130, 246, 0.15);
+    background: rgba(59, 130, 246, 0.05);
+  }
+  .urgency-option:hover .urgency-content {
+    border-color: var(--card-hover-border);
+  }
+
+  /* Live Cost Estimator Widget */
+  .live-estimator-box {
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    animation: pulse-border 3s infinite;
+  }
+  @keyframes pulse-border {
+    0% { border-color: rgba(59, 130, 246, 0.2); }
+    50% { border-color: rgba(59, 130, 246, 0.4); }
+    100% { border-color: rgba(59, 130, 246, 0.2); }
+  }
+  .estimator-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-light);
+    margin-bottom: 8px;
+  }
+  body.light-mode .estimator-header {
+    color: var(--primary);
+  }
+  .estimated-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .estimator-sub {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .wizard-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .wizard-actions button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 6px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text); font-size: 14px;
+    padding: 12px 14px; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; resize: vertical;
+    transition: var(--transition);
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+  .fg select { appearance: none; cursor: pointer; }
+  .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sub-btn {
+    width: 100%; background: var(--primary); color: #fff; border: none;
+    border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 600;
+    cursor: pointer; margin-top: 6px; display: flex; align-items: center;
+    justify-content: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  }
+  .sub-btn:hover { 
+    background: var(--primary-hover); 
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  }
+  .form-note { text-align: center; font-size: 11px; color: var(--muted); margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+  /* Spinning Loader */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── Footer ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; transition: var(--transition); }
+  footer span { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .footer-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .fbadge { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 11px; color: var(--muted); font-weight: 600; transition: var(--transition); }
+
+  /* ── Responsive ── */
+  @media (max-width: 850px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .hero { padding: 80px 20px 60px; }
+    .hero h1 { font-size: 40px; }
+    .trust-strip { flex-wrap: wrap; }
+    .trust-item { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); padding: 18px 12px; }
+    .trust-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+    .trust-item:last-child { border-bottom: none; }
+    .why, .services, .process, .form-section { padding: 70px 20px; }
+    .form-layout { grid-template-columns: 1fr; gap: 40px; }
+    .fg-row { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 20px; }
+    footer { padding: 24px 20px; flex-direction: column; align-items: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Emergency bar -->
+<div class="emerg">
+  <i class="ti ti-alert-triangle" style="font-size:16px"></i>
+  24/7 Emergency Plumbing &nbsp;·&nbsp; No call-out fee after hours
+  <span class="emerg-num"><i class="ti ti-phone" style="font-size:13px;vertical-align:-1px"></i>&nbsp; 012 000 1234</span>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon"><i class="ti ti-droplet"></i></div>
+    FlowPro
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#quote">Get Estimate</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+      <i class="ti ti-moon"></i>
+    </button>
+    <a href="#quote" class="nav-cta">Get a quote</a>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
+      <i class="ti ti-menu-2"></i>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="#services" onclick="document.getElementById('mob').classList.remove('open')">Services</a>
+  <a href="#process" onclick="document.getElementById('mob').classList.remove('open')">Process</a>
+  <a href="#quote" onclick="document.getElementById('mob').classList.remove('open')">Get a quote</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="badge"><i class="ti ti-map-pin" style="font-size:14px"></i> Pretoria &amp; surrounds</div>
+    <h1>Plumbing that<br><em>actually shows up</em></h1>
+    <p class="hero-sub">Licensed, insured, and on call around the clock. We fix leaks, install geysers, and handle emergencies — fast.</p>
+    <div class="hero-btns">
+      <a href="tel:0120001234" class="btn-p"><i class="ti ti-phone"></i> Call now — 012 000 1234</a>
+      <a href="#services" class="btn-s"><i class="ti ti-arrow-down"></i> See our services</a>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-item"><div class="trust-num">Launch Offer</div><div class="trust-label">No call-out fee</div></div>
+      <div class="trust-item"><div class="trust-num">5.0★</div><div class="trust-label">12 early reviews</div></div>
+      <div class="trust-item"><div class="trust-num">Combined</div><div class="trust-label">15+ yrs experience</div></div>
+      <div class="trust-item"><div class="trust-num">&lt;45 min</div><div class="trust-label">Pretoria response</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="why">
+  <div class="inner">
+    <span class="section-chip">Why FlowPro</span>
+    <div class="section-h">No surprises. Just results.</div>
+    <p class="section-p">We built FlowPro on a simple idea: show up on time, fix it right, charge fairly.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">01</div><h3>Upfront pricing</h3><p>You get a clear quote before we start. No hidden fees, no shock invoices.</p></div>
+      <div class="why-card"><div class="why-num">02</div><h3>Certified plumbers</h3><p>All our team are PIRB registered and carry full public liability insurance.</p></div>
+      <div class="why-card"><div class="why-num">03</div><h3>Guaranteed work</h3><p>Every job comes with a 12-month workmanship guarantee — we stand behind it.</p></div>
+      <div class="why-card"><div class="why-num">04</div><h3>Always available</h3><p>Day, night, weekends, public holidays — when pipes burst, we answer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="inner">
+    <span class="section-chip">Services</span>
+    <div class="section-h">Everything your pipes need</div>
+    <p class="section-p">From a dripping tap to a full bathroom fit-out — one call, one team.</p>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Emergency repairs</h3>
+        <p>Burst pipes, flooding, and sewage — prioritised response, any time of day.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">Available 24/7</span></div>
+      </div>
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Leak detection</h3>
+        <p>Non-invasive technology locates hidden leaks before they become disasters.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">From R850</span></div>
+      </div>
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Geyser services</h3>
+        <p>Installation, replacement, and repairs for all geyser makes and models.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">Same-day</span></div>
+      </div>
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Drain clearing</h3>
+        <p>Blocked drains cleared fast with high-pressure jetting equipment.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">From R450</span></div>
+      </div>
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Bathroom fitting</h3>
+        <p>Full bathroom installations — baths, showers, toilets, basins, and tiling.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">Quote required</span></div>
+      </div>
+      <div class="svc">
+        <div class="svc-dot"></div>
+        <h3>Maintenance plans</h3>
+        <p>Monthly or annual plumbing check-ups for homes and commercial properties.</p>
+        <div class="svc-tag"><span class="svc-tag-badge">From R299/mo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process" id="process">
+  <div class="inner" style="text-align:center">
+    <span class="section-chip">How it works</span>
+    <div class="section-h">From call to fixed in 4 steps</div>
+    <p class="section-p">We make it easy.</p>
+    <div class="steps">
+      <div class="step"><div class="step-circle">1</div><h3>Call or request</h3><p>Phone us or request online — we respond within 30 minutes.</p></div>
+      <div class="step"><div class="step-circle">2</div><h3>Instant estimate</h3><p>Use our online estimator or get a clear fixed assessment quote.</p></div>
+      <div class="step"><div class="step-circle">3</div><h3>We get to work</h3><p>Our plumber arrives on time with all parts needed to fix the issue.</p></div>
+      <div class="step"><div class="step-circle">4</div><h3>Done &amp; certified</h3><p>Job completed, tested, and signed off with a workmanship guarantee.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Quote form -->
+<section class="form-section" id="quote">
+  <div class="inner">
+    <span class="section-chip">Free Quote</span>
+    <div class="section-h">Get an Estimate &amp; Booking</div>
+    <p class="section-p">Complete our quick questionnaire to see a budget estimate instantly and lock in your priority callback.</p>
+  </div>
+  <div class="form-layout">
+    <div class="form-left">
+      <h2>Pretoria's fresh<br>plumbing crew</h2>
+      <p>We are excited to launch in Pretoria &amp; Centurion. Fill in the wizard and one of our licensed plumbers will call you back within 30 minutes.</p>
+      <div class="form-promise">
+        <div class="promise-row"><i class="ti ti-clock"></i> Response within 30 minutes</div>
+        <div class="promise-row"><i class="ti ti-circle-dollar"></i> Launch Offer: Free estimate</div>
+        <div class="promise-row"><i class="ti ti-shield-check"></i> PIRB certified plumbers</div>
+        <div class="promise-row"><i class="ti ti-map-pin"></i> Covering Pretoria &amp; Centurion</div>
+        <div class="promise-row"><i class="ti ti-star"></i> 5.0 stars · 12 local reviews</div>
+      </div>
+    </div>
+    
+    <div class="form-box">
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step-dot active" data-step="1">1</div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="2">2</div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="3">3</div>
+      </div>
+      
+      <form id="quote-wizard" onsubmit="handleWizardSubmit(event)">
+        <!-- Step 1: Select Service -->
+        <div class="wizard-step active" data-step="1">
+          <h3 class="wizard-step-title">1. Select service type</h3>
+          <div class="service-cards-grid">
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Emergency Repairs" data-price-min="1200" data-price-max="2500" required />
+              <div class="svc-card-content">
+                <i class="ti ti-alert-triangle"></i>
+                <span class="svc-title">Emergency</span>
+                <span class="svc-desc">Burst pipes, floods</span>
+              </div>
+            </label>
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Geyser Services" data-price-min="1500" data-price-max="4500" />
+              <div class="svc-card-content">
+                <i class="ti ti-flame"></i>
+                <span class="svc-title">Geyser</span>
+                <span class="svc-desc">No hot water, leaks</span>
+              </div>
+            </label>
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Leak Detection" data-price-min="950" data-price-max="2200" />
+              <div class="svc-card-content">
+                <i class="ti ti-search"></i>
+                <span class="svc-title">Leaks</span>
+                <span class="svc-desc">Electronic detection</span>
+              </div>
+            </label>
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Drain Clearing" data-price-min="650" data-price-max="1800" />
+              <div class="svc-card-content">
+                <i class="ti ti-trash-x"></i>
+                <span class="svc-title">Blocked Drain</span>
+                <span class="svc-desc">Clearing &amp; jetting</span>
+              </div>
+            </label>
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Bathroom Fitting" data-price-min="0" data-price-max="0" data-custom-quote="true" />
+              <div class="svc-card-content">
+                <i class="ti ti-bath"></i>
+                <span class="svc-title">Fitting</span>
+                <span class="svc-desc">Taps, toilets, showers</span>
+              </div>
+            </label>
+            <label class="svc-card">
+              <input type="radio" name="service_type" value="Maintenance" data-price-min="450" data-price-max="950" />
+              <div class="svc-card-content">
+                <i class="ti ti-tool"></i>
+                <span class="svc-title">Maintenance</span>
+                <span class="svc-desc">Taps, general repairs</span>
+              </div>
+            </label>
+          </div>
+          <div class="wizard-actions">
+            <button type="button" class="btn-p next-step-btn" onclick="goToStep(2)" disabled style="width: 100%;">Continue &nbsp;<i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 2: Urgency & Scale -->
+        <div class="wizard-step" data-step="2">
+          <h3 class="wizard-step-title">2. Choose urgency</h3>
+          <div class="urgency-grid">
+            <label class="urgency-option">
+              <input type="radio" name="urgency" value="emergency" data-surcharge="450" required />
+              <div class="urgency-content">
+                <span class="urgency-badge emerg">24/7 Priority</span>
+                <span class="urgency-title">Emergency Dispatch</span>
+                <span class="urgency-desc">Plumber sent immediately (+R450 priority fee)</span>
+              </div>
+            </label>
+            <label class="urgency-option">
+              <input type="radio" name="urgency" value="sameday" data-surcharge="0" checked />
+              <div class="urgency-content">
+                <span class="urgency-badge sameday">Standard</span>
+                <span class="urgency-title">Same-Day Service</span>
+                <span class="urgency-desc">Arrives within 4 hours today (No extra charge)</span>
+              </div>
+            </label>
+            <label class="urgency-option">
+              <input type="radio" name="urgency" value="booked" data-surcharge="-100" />
+              <div class="urgency-content">
+                <span class="urgency-badge booked">Planned</span>
+                <span class="urgency-title">Scheduled Booking</span>
+                <span class="urgency-desc">Book for a future date (-R100 discount applied)</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Live Estimator Box -->
+          <div class="live-estimator-box">
+            <div class="estimator-header">
+              <i class="ti ti-calculator"></i>
+              <span>Live Budget Estimator</span>
+            </div>
+            <div class="estimator-body">
+              <div class="estimated-price" id="estimated-price-display">Select a service...</div>
+              <p class="estimator-sub">Estimated range in ZAR (R) based on choices. Excludes parts. Final price verified on-site.</p>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn-s" onclick="goToStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
+            <button type="button" class="btn-p" onclick="goToStep(3)">Continue &nbsp;<i class="ti ti-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 3: Contact Details -->
+        <div class="wizard-step" data-step="3">
+          <h3 class="wizard-step-title">3. Delivery &amp; Contact</h3>
+          <div class="fg-row">
+            <div class="fg"><label>First name</label><input type="text" id="wiz-fname" placeholder="John" required /></div>
+            <div class="fg"><label>Last name</label><input type="text" id="wiz-lname" placeholder="Smith" required /></div>
+          </div>
+          <div class="fg"><label>Phone number</label><input type="tel" id="wiz-phone" placeholder="071 000 0000" required /></div>
+          <div class="fg"><label>Suburb / area</label><input type="text" id="wiz-suburb" placeholder="Menlyn, Garsfontein, Centurion..." required /></div>
+          <div class="fg"><label>Details (optional)</label><textarea id="wiz-details" rows="3" placeholder="Any extra info about the problem..."></textarea></div>
+          
+          <div class="wizard-actions">
+            <button type="button" class="btn-s" onclick="goToStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
+            <button type="submit" class="sub-btn"><i class="ti ti-send"></i> Request Quote Estimator</button>
+          </div>
+          <p class="form-note"><i class="ti ti-lock" style="font-size:12px"></i> Your details are kept private and never shared</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span>© 2026 FlowPro Plumbing (Pty) Ltd · Pretoria &amp; Centurion</span>
+  <div class="footer-badges">
+    <span class="fbadge">PIRB Registered</span>
+    <span class="fbadge">Public Liability Insured</span>
+    <span class="fbadge">12-Month Guarantee</span>
+  </div>
+</footer>
+
+<script>
+  // Theme Switching System
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  const body = document.body;
+
+  function setTheme(theme) {
+    if (theme === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.querySelector('i').className = 'ti ti-sun';
+    } else {
+      body.classList.remove('light-mode');
+      toggleBtn.querySelector('i').className = 'ti ti-moon';
+    }
+  }
+
+  // Initial Theme Setup
+  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  setTheme(savedTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    const isLight = body.classList.contains('light-mode');
+    const newTheme = isLight ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
+  });
+
+  // Multi-step Quote Wizard Logic
+  let currentStep = 1;
+
+  function updateWizardButtons() {
+    const selectedService = document.querySelector('input[name="service_type"]:checked');
+    const step1NextBtn = document.querySelector('.wizard-step[data-step="1"] .next-step-btn');
+    if (step1NextBtn) {
+      step1NextBtn.disabled = !selectedService;
+    }
+  }
+
+  // Attach change listeners to update buttons & calculations
+  document.querySelectorAll('input[name="service_type"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      updateWizardButtons();
+      calculateEstimate();
+    });
+  });
+
+  document.querySelectorAll('input[name="urgency"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      calculateEstimate();
+    });
+  });
+
+  function calculateEstimate() {
+    const selectedService = document.querySelector('input[name="service_type"]:checked');
+    const selectedUrgency = document.querySelector('input[name="urgency"]:checked');
+    const display = document.getElementById('estimated-price-display');
+    
+    if (!selectedService) {
+      display.textContent = 'Select a service...';
+      return;
+    }
+    
+    const isCustom = selectedService.getAttribute('data-custom-quote') === 'true';
+    if (isCustom) {
+      display.textContent = 'Custom Quote Required';
+      return;
+    }
+    
+    const min = parseInt(selectedService.getAttribute('data-price-min'));
+    const max = parseInt(selectedService.getAttribute('data-price-max'));
+    
+    let surcharge = 0;
+    if (selectedUrgency) {
+      surcharge = parseInt(selectedUrgency.getAttribute('data-surcharge')) || 0;
+    }
+    
+    const totalMin = min + surcharge;
+    const totalMax = max + surcharge;
+    
+    display.textContent = `R ${totalMin} - R ${totalMax}`;
+  }
+
+  function goToStep(step) {
+    if (step === 2 && currentStep === 1) {
+      const selectedService = document.querySelector('input[name="service_type"]:checked');
+      if (!selectedService) return;
+    }
+    if (step === 3 && currentStep === 2) {
+      const selectedUrgency = document.querySelector('input[name="urgency"]:checked');
+      if (!selectedUrgency) return;
+    }
+
+    // Toggle Wizard Step Visibilities
+    document.querySelectorAll('.wizard-step').forEach(stepDiv => {
+      stepDiv.classList.remove('active');
+    });
+    const nextStepDiv = document.querySelector(`.wizard-step[data-step="${step}"]`);
+    if (nextStepDiv) {
+      nextStepDiv.classList.add('active');
+    }
+
+    // Update Progress Indicator Dots
+    document.querySelectorAll('.step-dot').forEach(dot => {
+      const dotStep = parseInt(dot.getAttribute('data-step'));
+      dot.classList.remove('active', 'completed');
+      if (dotStep === step) {
+        dot.classList.add('active');
+      } else if (dotStep < step) {
+        dot.classList.add('completed');
+      }
+    });
+
+    // Update Progress Indicator Connecting Line
+    const lines = document.querySelectorAll('.step-line');
+    if (lines.length > 0) {
+      if (step >= 2) lines[0].classList.add('active');
+      else lines[0].classList.remove('active');
+    }
+    if (lines.length > 1) {
+      if (step >= 3) lines[1].classList.add('active');
+      else lines[1].classList.remove('active');
+    }
+
+    currentStep = step;
+    calculateEstimate();
+  }
+
+  function handleWizardSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.sub-btn');
+    const service = document.querySelector('input[name="service_type"]:checked')?.value;
+    const fname = document.getElementById('wiz-fname').value;
+    const phone = document.getElementById('wiz-phone').value;
+    
+    btn.innerHTML = '<i class="ti ti-loader animate-spin"></i> Submitting...';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      const formBox = document.querySelector('.form-box');
+      formBox.innerHTML = `
+        <div class="success-screen" style="text-align: center; padding: 40px 10px; animation: stepFadeIn 0.5s ease;">
+          <div class="success-icon" style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px;">
+            <i class="ti ti-check"></i>
+          </div>
+          <h3 style="font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 12px;">Request Submitted!</h3>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px;">
+            Thank you, <strong>${fname}</strong>. We've received your request for <strong>${service}</strong>. A FlowPro agent will call you back at <strong>${phone}</strong> within 30 minutes.
+          </p>
+          <button type="button" class="btn-s" onclick="location.reload()" style="padding: 10px 24px; font-size: 14px;">Done</button>
+        </div>
+      `;
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>
