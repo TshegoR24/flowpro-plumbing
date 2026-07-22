@@ -4,13 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FlowPro Plumbing — Premium Pretoria Plumbers</title>
+<meta name="description" content="Licensed, insured 24/7 plumbers in Pretoria & Centurion. Emergency repairs, geysers, drains and bathroom fitting — upfront pricing, 12-month guarantee." />
+<meta name="theme-color" content="#070a13" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  
+
   :root {
     --bg: #070a13;
     --bg2: #0e1322;
@@ -22,6 +24,9 @@
     --primary-hover: #2563eb;
     --primary-light: #60a5fa;
     --primary-dark: #1d4ed8;
+    --accent: #ea580c;
+    --accent-hover: #c2410c;
+    --on-accent: #ffffff;
     --emerg-bg: #dc2626;
     --emerg-num-bg: rgba(255, 255, 255, 0.2);
     --glass-bg: rgba(7, 10, 19, 0.75);
@@ -29,7 +34,10 @@
     --card-hover-border: #3b82f6;
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     --success: #10b981;
+    --star: #fbbf24;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-head: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
   }
 
   body.light-mode {
@@ -43,6 +51,9 @@
     --primary-hover: #1d4ed8;
     --primary-light: #3b82f6;
     --primary-dark: #1e3a8a;
+    --accent: #c2410c;
+    --accent-hover: #9a3412;
+    --on-accent: #ffffff;
     --emerg-bg: #b91c1c;
     --emerg-num-bg: rgba(0, 0, 0, 0.06);
     --glass-bg: rgba(255, 255, 255, 0.8);
@@ -53,13 +64,51 @@
   }
 
   html { scroll-behavior: smooth; }
-  body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-    background: var(--bg); 
-    color: var(--text); 
-    line-height: 1.6; 
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
   }
+  h1, h2, h3, .logo, .btn-p, .btn-s, .nav-cta, .sub-btn { font-family: var(--font-head); }
+
+  a, button { cursor: pointer; }
+  :focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 200;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    left: 20px;
+    top: 20px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ── Reveal on scroll ── */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
 
   /* ── Emergency bar ── */
   .emerg {
@@ -113,44 +162,45 @@
     z-index: 100;
     transition: var(--transition);
   }
-  .logo { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    font-size: 20px; 
-    font-weight: 800; 
-    color: var(--white); 
-    text-decoration: none; 
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    text-decoration: none;
     letter-spacing: -0.02em;
   }
-  .logo-icon { 
-    width: 38px; 
-    height: 38px; 
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); 
-    border-radius: 10px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    flex-shrink: 0;
   }
   .logo-icon i { font-size: 20px; color: #fff; }
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--white); }
-  
+
   .nav-actions {
     display: flex;
     align-items: center;
     gap: 16px;
   }
-  
+
   .theme-toggle-btn {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text);
     border-radius: 8px;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -168,29 +218,41 @@
     color: var(--primary);
   }
 
-  .nav-cta { 
-    background: var(--primary) !important; 
-    color: #fff !important; 
-    border-radius: 8px; 
-    padding: 10px 20px !important; 
-    font-size: 14px !important; 
-    font-weight: 600 !important; 
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
+    border-radius: 8px;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
     transition: var(--transition) !important;
+    text-decoration: none;
   }
-  .nav-cta:hover { 
-    background: var(--primary-hover) !important; 
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  .nav-cta:hover {
+    background: var(--accent-hover) !important;
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.45);
     transform: translateY(-1px);
   }
-  .hamburger { display: none; background: none; border: none; color: var(--text); cursor: pointer; font-size: 24px; }
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
   .mobile-menu { display: none; flex-direction: column; gap: 0; background: var(--bg2); border-bottom: 1px solid var(--border); }
-  .mobile-menu a { color: var(--muted); font-size: 15px; font-weight: 500; text-decoration: none; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+  .mobile-menu a { color: var(--muted); font-size: 15px; font-weight: 500; text-decoration: none; padding: 16px 24px; border-bottom: 1px solid var(--border); display: block; min-height: 44px; }
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu.open { display: flex; }
 
   /* ── Hero ── */
-  .hero { padding: 120px 40px 100px; background: var(--bg); position: relative; overflow: hidden; }
+  .hero { padding: 120px 40px 90px; background: var(--bg); position: relative; overflow: hidden; }
   .hero-grid-bg {
     position: absolute; inset: 0;
     background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -211,16 +273,16 @@
     background: rgba(37, 99, 235, 0.06);
     border-color: rgba(37, 99, 235, 0.15);
   }
-  .hero h1 { 
-    font-size: 58px; 
-    font-weight: 800; 
-    line-height: 1.1; 
-    color: var(--white); 
-    margin-bottom: 24px; 
-    letter-spacing: -.03em; 
+  .hero h1 {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: -.03em;
   }
-  .hero h1 em { 
-    font-style: normal; 
+  .hero h1 em {
+    font-style: normal;
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -230,35 +292,36 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .hero-sub { 
-    font-size: 18px; 
-    color: var(--muted); 
-    line-height: 1.7; 
-    margin-bottom: 40px; 
-    max-width: 580px; 
-    margin-left: auto; 
-    margin-right: auto; 
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
-  .btn-p { 
-    background: var(--primary); 
-    color: #fff; 
-    border: none; 
-    border-radius: 12px; 
-    padding: 16px 32px; 
-    font-size: 15px; 
-    font-weight: 600; 
-    cursor: pointer; 
-    display: inline-flex; 
-    align-items: center; 
-    gap: 8px; 
-    text-decoration: none; 
+  .btn-p {
+    background: var(--accent);
+    color: var(--on-accent);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
     transition: var(--transition);
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+    min-height: 44px;
   }
-  .btn-p:hover { 
-    background: var(--primary-hover); 
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  .btn-p:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45);
     transform: translateY(-2px);
   }
   .btn-p:disabled {
@@ -268,23 +331,24 @@
     transform: none;
     opacity: 0.6;
   }
-  .btn-s { 
-    background: transparent; 
-    color: var(--text); 
-    border: 1px solid var(--border); 
-    border-radius: 12px; 
-    padding: 16px 32px; 
-    font-size: 15px; 
-    font-weight: 600; 
-    cursor: pointer; 
-    display: inline-flex; 
-    align-items: center; 
-    gap: 8px; 
-    text-decoration: none; 
-    transition: var(--transition); 
+  .btn-s {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+    min-height: 44px;
   }
-  .btn-s:hover { 
-    border-color: var(--primary-light); 
+  .btn-s:hover {
+    border-color: var(--primary-light);
     background: rgba(59, 130, 246, 0.02);
     transform: translateY(-2px);
   }
@@ -292,36 +356,47 @@
     border-color: var(--primary);
     background: rgba(37, 99, 235, 0.02);
   }
-  
-  .trust-strip { 
-    display: flex; 
-    justify-content: center; 
-    border: 1px solid var(--border); 
-    border-radius: 18px; 
-    overflow: hidden; 
-    background: var(--card-bg); 
+
+  .trust-strip {
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--card-bg);
     box-shadow: var(--shadow);
     transition: var(--transition);
   }
   .trust-item { flex: 1; padding: 24px 16px; text-align: center; border-right: 1px solid var(--border); transition: background 0.2s ease; }
   .trust-item:hover { background: rgba(59, 130, 246, 0.02); }
   .trust-item:last-child { border-right: none; }
-  .trust-num { font-size: 28px; font-weight: 700; color: var(--primary-light); }
+  .trust-num { font-size: 28px; font-weight: 700; color: var(--primary-light); font-family: var(--font-head); }
   body.light-mode .trust-num { color: var(--primary); }
   .trust-label { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
 
+  /* ── Certifications strip ── */
+  .certs { padding: 36px 40px; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .certs-inner {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .cert-item { display: flex; align-items: center; gap: 12px; justify-content: center; }
+  .cert-item i { font-size: 26px; color: var(--primary-light); flex-shrink: 0; }
+  body.light-mode .cert-item i { color: var(--primary); }
+  .cert-item span { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
   /* ── Why ── */
   .why { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); }
-  .section-chip { 
-    display: inline-block; 
-    background: rgba(59, 130, 246, 0.08); 
-    color: var(--primary-light); 
-    border: 1px solid rgba(59, 130, 246, 0.2); 
-    border-radius: 20px; 
-    padding: 6px 16px; 
-    font-size: 12px; 
-    font-weight: 600; 
-    margin-bottom: 16px; 
+  .section-chip {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--primary-light);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 16px;
     letter-spacing: 0.02em;
   }
   body.light-mode .section-chip {
@@ -332,32 +407,33 @@
   .section-h { font-size: 38px; font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -.02em; }
   .section-p { font-size: 16px; color: var(--muted); margin-bottom: 48px; line-height: 1.7; max-width: 600px; }
   .inner { max-width: 960px; margin: 0 auto; }
-  .why-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
   }
-  .why-card { 
-    background: var(--card-bg); 
-    padding: 36px 28px; 
-    border: 1px solid var(--border); 
-    border-radius: 18px; 
-    box-shadow: var(--shadow); 
+  .why-card {
+    background: var(--card-bg);
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
     transition: var(--transition);
   }
   .why-card:hover {
     transform: translateY(-4px);
     border-color: var(--card-hover-border);
   }
-  .why-num { 
-    font-size: 40px; 
-    font-weight: 800; 
+  .why-num {
+    font-size: 40px;
+    font-weight: 800;
+    font-family: var(--font-head);
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: .9; 
-    margin-bottom: 16px; 
-    line-height: 1; 
+    opacity: .9;
+    margin-bottom: 16px;
+    line-height: 1;
   }
   body.light-mode .why-num {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -370,28 +446,28 @@
   /* ── Services ── */
   .services { padding: 100px 40px; background: var(--bg); border-top: 1px solid var(--border); transition: var(--transition); }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-  .svc { 
-    background: var(--card-bg); 
-    border: 1px solid var(--border); 
-    border-radius: 18px; 
-    padding: 36px 28px; 
+  .svc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 36px 28px;
     box-shadow: var(--shadow);
-    transition: var(--transition); 
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
     height: 100%;
   }
-  .svc:hover { 
-    transform: translateY(-4px); 
-    border-color: var(--card-hover-border); 
+  .svc:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-hover-border);
     box-shadow: 0 12px 24px -10px rgba(59, 130, 246, 0.15);
   }
-  .svc-dot { 
-    width: 8px; 
-    height: 8px; 
-    border-radius: 50%; 
-    background: var(--primary-light); 
-    margin-bottom: 20px; 
+  .svc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    margin-bottom: 20px;
     box-shadow: 0 0 10px var(--primary-light);
   }
   body.light-mode .svc-dot {
@@ -403,7 +479,7 @@
   .svc-tag { display: inline-block; margin-top: auto; padding-top: 14px; }
   .svc-tag-badge {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary-light);
     background: rgba(59, 130, 246, 0.1);
     border: 1px solid rgba(59, 130, 246, 0.2);
@@ -419,9 +495,9 @@
   /* ── Process ── */
   .process { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); }
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-  .step { 
-    padding: 36px 24px; 
-    text-align: center; 
+  .step {
+    padding: 36px 24px;
+    text-align: center;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 18px;
@@ -432,19 +508,20 @@
     transform: translateY(-2px);
     border-color: var(--card-hover-border);
   }
-  .step-circle { 
-    width: 52px; 
-    height: 52px; 
-    border-radius: 50%; 
-    background: rgba(59, 130, 246, 0.1); 
-    border: 1px solid rgba(59, 130, 246, 0.3); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    margin: 0 auto 20px; 
-    font-size: 17px; 
-    font-weight: 700; 
-    color: var(--primary-light); 
+  .step-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: var(--font-head);
+    color: var(--primary-light);
     box-shadow: 0 0 12px rgba(59, 130, 246, 0.1);
   }
   body.light-mode .step-circle {
@@ -455,18 +532,65 @@
   .step h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
   .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
+  /* ── Testimonials ── */
+  .testimonials { padding: 100px 40px; background: var(--bg); border-top: 1px solid var(--border); transition: var(--transition); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .testi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .testi-card:hover { transform: translateY(-4px); border-color: var(--card-hover-border); }
+  .testi-stars { color: var(--star); font-size: 15px; letter-spacing: 2px; margin-bottom: 16px; }
+  .testi-quote { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 20px; flex: 1; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 14px; font-family: var(--font-head);
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 13px; font-weight: 700; color: var(--white); }
+  .testi-loc { font-size: 12px; color: var(--muted); }
+
+  /* ── Service area ── */
+  .area { padding: 80px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); text-align: center; }
+  .area-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
+  .area-chip {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+  }
+  .area-chip:hover { border-color: var(--card-hover-border); transform: translateY(-2px); }
+  .area-chip i { font-size: 14px; color: var(--primary-light); }
+  body.light-mode .area-chip i { color: var(--primary); }
+
   /* ── Form Wizard & Estimator ── */
   .form-section { padding: 100px 40px; background: var(--bg); border-top: 1px solid var(--border); transition: var(--transition); }
   .form-section .section-h, .form-section .section-p { text-align: center; }
   .form-section .section-p { margin-left: auto; margin-right: auto; }
-  
-  .form-layout { 
-    display: grid; 
-    grid-template-columns: 1.15fr 0.85fr; 
-    gap: 60px; 
-    max-width: 960px; 
-    margin: 48px auto 0; 
-    align-items: start; 
+
+  .form-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    max-width: 960px;
+    margin: 48px auto 0;
+    align-items: start;
   }
   .form-left h2 { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 16px; letter-spacing: -.02em; }
   .form-left > p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
@@ -474,16 +598,16 @@
   .promise-row { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text); font-weight: 500; }
   .promise-row i { font-size: 20px; color: var(--primary-light); flex-shrink: 0; }
   body.light-mode .promise-row i { color: var(--primary); }
-  
-  .form-box { 
-    background: var(--card-bg); 
-    border: 1px solid var(--border); 
-    border-radius: 20px; 
-    padding: 32px; 
+
+  .form-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
     box-shadow: var(--shadow);
     transition: var(--transition);
   }
-  
+
   /* Wizard Step Progress */
   .step-indicator {
     display: flex;
@@ -567,6 +691,10 @@
     width: 0;
     height: 0;
   }
+  .svc-card input:focus-visible + .svc-card-content {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+  }
   .svc-card-content {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -575,6 +703,7 @@
     text-align: center;
     transition: var(--transition);
     height: 100%;
+    min-height: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -632,6 +761,10 @@
     width: 0;
     height: 0;
   }
+  .urgency-option input:focus-visible + .urgency-content {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+  }
   .urgency-content {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -641,6 +774,8 @@
     flex-direction: column;
     gap: 4px;
     transition: var(--transition);
+    min-height: 44px;
+    justify-content: center;
   }
   .urgency-badge {
     align-self: flex-start;
@@ -652,12 +787,12 @@
     letter-spacing: 0.05em;
   }
   .urgency-badge.emerg {
-    background: rgba(239, 68, 68, 0.15);
-    color: #f87171;
+    background: rgba(234, 88, 12, 0.15);
+    color: #fb923c;
   }
   body.light-mode .urgency-badge.emerg {
-    background: #fee2e2;
-    color: #ef4444;
+    background: #ffedd5;
+    color: #c2410c;
   }
   .urgency-badge.sameday {
     background: rgba(59, 130, 246, 0.15);
@@ -724,6 +859,7 @@
   .estimated-price {
     font-size: 24px;
     font-weight: 800;
+    font-family: var(--font-head);
     color: var(--white);
     margin-bottom: 4px;
   }
@@ -748,26 +884,28 @@
   .fg input, .fg select, .fg textarea {
     width: 100%; background: var(--bg); border: 1px solid var(--border);
     border-radius: 10px; color: var(--text); font-size: 14px;
-    padding: 12px 14px; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; resize: vertical;
+    padding: 12px 14px; font-family: var(--font-body); outline: none; resize: vertical;
     transition: var(--transition);
+    min-height: 44px;
   }
-  .fg input:focus, .fg select:focus, .fg textarea:focus { 
-    border-color: var(--primary); 
+  .fg input:focus, .fg select:focus, .fg textarea:focus {
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
   }
   .fg select { appearance: none; cursor: pointer; }
   .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .sub-btn {
-    width: 100%; background: var(--primary); color: #fff; border: none;
-    border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 600;
+    width: 100%; background: var(--accent); color: var(--on-accent); border: none;
+    border-radius: 10px; padding: 14px; font-size: 15px; font-weight: 700;
     cursor: pointer; margin-top: 6px; display: flex; align-items: center;
-    justify-content: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif;
+    justify-content: center; gap: 8px; font-family: var(--font-head);
     transition: var(--transition);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+    min-height: 44px;
   }
-  .sub-btn:hover { 
-    background: var(--primary-hover); 
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  .sub-btn:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 6px 16px rgba(234, 88, 12, 0.45);
   }
   .form-note { text-align: center; font-size: 11px; color: var(--muted); margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
@@ -781,6 +919,57 @@
     to { transform: rotate(360deg); }
   }
 
+  /* ── FAQ ── */
+  .faq { padding: 100px 40px; background: var(--bg2); border-top: 1px solid var(--border); transition: var(--transition); }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .faq-item.open { border-color: var(--card-hover-border); }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 44px;
+  }
+  .faq-question i { color: var(--primary-light); flex-shrink: 0; transition: transform 0.25s ease; font-size: 18px; }
+  body.light-mode .faq-question i { color: var(--primary); }
+  .faq-item.open .faq-question i { transform: rotate(180deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-answer p { font-size: 14px; color: var(--muted); line-height: 1.7; padding: 0 24px 20px; }
+
+  /* ── Final CTA band ── */
+  .final-cta {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    padding: 70px 40px;
+    text-align: center;
+  }
+  .final-cta h2 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 14px; letter-spacing: -.02em; font-family: var(--font-head); }
+  .final-cta p { font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 32px; }
+  .final-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .final-cta .btn-p { background: #fff; color: var(--accent-hover); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+  .final-cta .btn-p:hover { background: #f8fafc; box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  .final-cta .btn-s { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .final-cta .btn-s:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
   /* ── Footer ── */
   footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; transition: var(--transition); }
   footer span { font-size: 13px; color: var(--muted); font-weight: 500; }
@@ -788,70 +977,90 @@
   .fbadge { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 11px; color: var(--muted); font-weight: 600; transition: var(--transition); }
 
   /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .certs-inner { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 850px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
-    .hamburger { display: block; }
+    .hamburger { display: flex; }
     .hero { padding: 80px 20px 60px; }
     .hero h1 { font-size: 40px; }
     .trust-strip { flex-wrap: wrap; }
     .trust-item { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border); padding: 18px 12px; }
     .trust-item:nth-child(2) { border-bottom: 1px solid var(--border); }
     .trust-item:last-child { border-bottom: none; }
-    .why, .services, .process, .form-section { padding: 70px 20px; }
+    .why, .services, .process, .form-section, .testimonials, .faq { padding: 70px 20px; }
+    .certs { padding: 28px 20px; }
+    .area { padding: 60px 20px; }
+    .final-cta { padding: 56px 20px; }
     .form-layout { grid-template-columns: 1fr; gap: 40px; }
     .fg-row { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 20px; }
     footer { padding: 24px 20px; flex-direction: column; align-items: center; text-align: center; }
   }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 32px; }
+    .section-h { font-size: 28px; }
+    .certs-inner { grid-template-columns: 1fr; }
+    .service-cards-grid { grid-template-columns: 1fr; }
+    .hero-btns .btn-p, .hero-btns .btn-s { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- Emergency bar -->
 <div class="emerg">
-  <i class="ti ti-alert-triangle" style="font-size:16px"></i>
+  <i class="ti ti-alert-triangle" style="font-size:16px" aria-hidden="true"></i>
   24/7 Emergency Plumbing &nbsp;·&nbsp; No call-out fee after hours
-  <span class="emerg-num"><i class="ti ti-phone" style="font-size:13px;vertical-align:-1px"></i>&nbsp; 012 000 1234</span>
+  <a href="tel:0120001234" class="emerg-num"><i class="ti ti-phone" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i>&nbsp; 012 000 1234</a>
 </div>
 
 <!-- Nav -->
 <nav>
   <a href="#" class="logo">
-    <div class="logo-icon"><i class="ti ti-droplet"></i></div>
+    <div class="logo-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div>
     FlowPro
   </a>
   <div class="nav-links">
     <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#quote">Get Estimate</a>
+    <a href="#why">Why Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
   </div>
   <div class="nav-actions">
-    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
-      <i class="ti ti-moon"></i>
+    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle dark or light theme">
+      <i class="ti ti-moon" aria-hidden="true"></i>
     </button>
     <a href="#quote" class="nav-cta">Get a quote</a>
-    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
-      <i class="ti ti-menu-2"></i>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Toggle menu" aria-expanded="false" aria-controls="mob">
+      <i class="ti ti-menu-2" aria-hidden="true"></i>
     </button>
   </div>
 </nav>
 <div class="mobile-menu" id="mob">
   <a href="#services" onclick="document.getElementById('mob').classList.remove('open')">Services</a>
-  <a href="#process" onclick="document.getElementById('mob').classList.remove('open')">Process</a>
+  <a href="#why" onclick="document.getElementById('mob').classList.remove('open')">Why Us</a>
+  <a href="#reviews" onclick="document.getElementById('mob').classList.remove('open')">Reviews</a>
+  <a href="#faq" onclick="document.getElementById('mob').classList.remove('open')">FAQ</a>
   <a href="#quote" onclick="document.getElementById('mob').classList.remove('open')">Get a quote</a>
 </div>
 
+<main id="main">
+
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-grid-bg"></div>
+  <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="badge"><i class="ti ti-map-pin" style="font-size:14px"></i> Pretoria &amp; surrounds</div>
+    <div class="badge"><i class="ti ti-map-pin" style="font-size:14px" aria-hidden="true"></i> Pretoria &amp; surrounds</div>
     <h1>Plumbing that<br><em>actually shows up</em></h1>
     <p class="hero-sub">Licensed, insured, and on call around the clock. We fix leaks, install geysers, and handle emergencies — fast.</p>
     <div class="hero-btns">
-      <a href="tel:0120001234" class="btn-p"><i class="ti ti-phone"></i> Call now — 012 000 1234</a>
-      <a href="#services" class="btn-s"><i class="ti ti-arrow-down"></i> See our services</a>
+      <a href="tel:0120001234" class="btn-p"><i class="ti ti-phone" aria-hidden="true"></i> Call now — 012 000 1234</a>
+      <a href="#services" class="btn-s"><i class="ti ti-arrow-down" aria-hidden="true"></i> See our services</a>
     </div>
     <div class="trust-strip">
       <div class="trust-item"><div class="trust-num">Launch Offer</div><div class="trust-label">No call-out fee</div></div>
@@ -862,11 +1071,21 @@
   </div>
 </section>
 
+<!-- Certifications strip -->
+<section class="certs" aria-label="Certifications and guarantees">
+  <div class="certs-inner">
+    <div class="cert-item"><i class="ti ti-certificate" aria-hidden="true"></i><span>PIRB Registered</span></div>
+    <div class="cert-item"><i class="ti ti-shield-check" aria-hidden="true"></i><span>Public Liability Insured</span></div>
+    <div class="cert-item"><i class="ti ti-award" aria-hidden="true"></i><span>12-Month Guarantee</span></div>
+    <div class="cert-item"><i class="ti ti-star" aria-hidden="true"></i><span>5.0★ Rated Locally</span></div>
+  </div>
+</section>
+
 <!-- Why -->
-<section class="why">
+<section class="why reveal" id="why">
   <div class="inner">
     <span class="section-chip">Why FlowPro</span>
-    <div class="section-h">No surprises. Just results.</div>
+    <h2 class="section-h">No surprises. Just results.</h2>
     <p class="section-p">We built FlowPro on a simple idea: show up on time, fix it right, charge fairly.</p>
     <div class="why-grid">
       <div class="why-card"><div class="why-num">01</div><h3>Upfront pricing</h3><p>You get a clear quote before we start. No hidden fees, no shock invoices.</p></div>
@@ -878,44 +1097,44 @@
 </section>
 
 <!-- Services -->
-<section class="services" id="services">
+<section class="services reveal" id="services">
   <div class="inner">
     <span class="section-chip">Services</span>
-    <div class="section-h">Everything your pipes need</div>
+    <h2 class="section-h">Everything your pipes need</h2>
     <p class="section-p">From a dripping tap to a full bathroom fit-out — one call, one team.</p>
     <div class="services-grid">
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Emergency repairs</h3>
         <p>Burst pipes, flooding, and sewage — prioritised response, any time of day.</p>
         <div class="svc-tag"><span class="svc-tag-badge">Available 24/7</span></div>
       </div>
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Leak detection</h3>
         <p>Non-invasive technology locates hidden leaks before they become disasters.</p>
         <div class="svc-tag"><span class="svc-tag-badge">From R850</span></div>
       </div>
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Geyser services</h3>
         <p>Installation, replacement, and repairs for all geyser makes and models.</p>
         <div class="svc-tag"><span class="svc-tag-badge">Same-day</span></div>
       </div>
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Drain clearing</h3>
         <p>Blocked drains cleared fast with high-pressure jetting equipment.</p>
         <div class="svc-tag"><span class="svc-tag-badge">From R450</span></div>
       </div>
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Bathroom fitting</h3>
         <p>Full bathroom installations — baths, showers, toilets, basins, and tiling.</p>
         <div class="svc-tag"><span class="svc-tag-badge">Quote required</span></div>
       </div>
       <div class="svc">
-        <div class="svc-dot"></div>
+        <div class="svc-dot" aria-hidden="true"></div>
         <h3>Maintenance plans</h3>
         <p>Monthly or annual plumbing check-ups for homes and commercial properties.</p>
         <div class="svc-tag"><span class="svc-tag-badge">From R299/mo</span></div>
@@ -925,11 +1144,11 @@
 </section>
 
 <!-- Process -->
-<section class="process" id="process">
+<section class="process reveal" id="process">
   <div class="inner" style="text-align:center">
     <span class="section-chip">How it works</span>
-    <div class="section-h">From call to fixed in 4 steps</div>
-    <p class="section-p">We make it easy.</p>
+    <h2 class="section-h">From call to fixed in 4 steps</h2>
+    <p class="section-p" style="margin-left:auto;margin-right:auto;">We make it easy.</p>
     <div class="steps">
       <div class="step"><div class="step-circle">1</div><h3>Call or request</h3><p>Phone us or request online — we respond within 30 minutes.</p></div>
       <div class="step"><div class="step-circle">2</div><h3>Instant estimate</h3><p>Use our online estimator or get a clear fixed assessment quote.</p></div>
@@ -939,11 +1158,67 @@
   </div>
 </section>
 
+<!-- Testimonials -->
+<section class="testimonials reveal" id="reviews">
+  <div class="inner" style="text-align:center">
+    <span class="section-chip">Reviews</span>
+    <h2 class="section-h">What Pretoria is saying</h2>
+    <p class="section-p" style="margin-left:auto;margin-right:auto;">We're new in town — here's what our first customers had to say.</p>
+    <div class="testi-grid" style="text-align:left">
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"Called at 11pm with a burst geyser — someone answered immediately and a plumber was here within the hour. Fixed, tested, and gone before midnight."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">N</div>
+          <div><div class="testi-name">Naledi M.</div><div class="testi-loc">Garsfontein</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"Quoted upfront, no surprises on the invoice. Cleared a nasty drain blockage in under 40 minutes."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">J</div>
+          <div><div class="testi-name">Johan P.</div><div class="testi-loc">Centurion</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="testi-quote">"First time using FlowPro and honestly the most professional plumber I've dealt with in Pretoria. Booking the maintenance plan next."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" aria-hidden="true">R</div>
+          <div><div class="testi-name">Refilwe S.</div><div class="testi-loc">Menlyn</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service area -->
+<section class="area reveal">
+  <div class="inner">
+    <span class="section-chip">Coverage</span>
+    <h2 class="section-h">Areas we serve</h2>
+    <p class="section-p" style="margin-left:auto;margin-right:auto;">Based in Pretoria, covering the greater metro.</p>
+    <div class="area-chips">
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Pretoria Central</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Hatfield</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Menlyn</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Garsfontein</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Centurion</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Waterkloof</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Brooklyn</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Faerie Glen</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Silverton</span>
+      <span class="area-chip"><i class="ti ti-map-pin" aria-hidden="true"></i> Montana</span>
+    </div>
+  </div>
+</section>
+
 <!-- Quote form -->
-<section class="form-section" id="quote">
+<section class="form-section reveal" id="quote">
   <div class="inner">
     <span class="section-chip">Free Quote</span>
-    <div class="section-h">Get an Estimate &amp; Booking</div>
+    <h2 class="section-h">Get an Estimate &amp; Booking</h2>
     <p class="section-p">Complete our quick questionnaire to see a budget estimate instantly and lock in your priority callback.</p>
   </div>
   <div class="form-layout">
@@ -951,14 +1226,14 @@
       <h2>Pretoria's fresh<br>plumbing crew</h2>
       <p>We are excited to launch in Pretoria &amp; Centurion. Fill in the wizard and one of our licensed plumbers will call you back within 30 minutes.</p>
       <div class="form-promise">
-        <div class="promise-row"><i class="ti ti-clock"></i> Response within 30 minutes</div>
-        <div class="promise-row"><i class="ti ti-circle-dollar"></i> Launch Offer: Free estimate</div>
-        <div class="promise-row"><i class="ti ti-shield-check"></i> PIRB certified plumbers</div>
-        <div class="promise-row"><i class="ti ti-map-pin"></i> Covering Pretoria &amp; Centurion</div>
-        <div class="promise-row"><i class="ti ti-star"></i> 5.0 stars · 12 local reviews</div>
+        <div class="promise-row"><i class="ti ti-clock" aria-hidden="true"></i> Response within 30 minutes</div>
+        <div class="promise-row"><i class="ti ti-circle-dollar" aria-hidden="true"></i> Launch Offer: Free estimate</div>
+        <div class="promise-row"><i class="ti ti-shield-check" aria-hidden="true"></i> PIRB certified plumbers</div>
+        <div class="promise-row"><i class="ti ti-map-pin" aria-hidden="true"></i> Covering Pretoria &amp; Centurion</div>
+        <div class="promise-row"><i class="ti ti-star" aria-hidden="true"></i> 5.0 stars · 12 local reviews</div>
       </div>
     </div>
-    
+
     <div class="form-box">
       <!-- Step Indicator -->
       <div class="step-indicator">
@@ -968,7 +1243,7 @@
         <div class="step-line"></div>
         <div class="step-dot" data-step="3">3</div>
       </div>
-      
+
       <form id="quote-wizard" onsubmit="handleWizardSubmit(event)">
         <!-- Step 1: Select Service -->
         <div class="wizard-step active" data-step="1">
@@ -977,7 +1252,7 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Emergency Repairs" data-price-min="1200" data-price-max="2500" required />
               <div class="svc-card-content">
-                <i class="ti ti-alert-triangle"></i>
+                <i class="ti ti-alert-triangle" aria-hidden="true"></i>
                 <span class="svc-title">Emergency</span>
                 <span class="svc-desc">Burst pipes, floods</span>
               </div>
@@ -985,7 +1260,7 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Geyser Services" data-price-min="1500" data-price-max="4500" />
               <div class="svc-card-content">
-                <i class="ti ti-flame"></i>
+                <i class="ti ti-flame" aria-hidden="true"></i>
                 <span class="svc-title">Geyser</span>
                 <span class="svc-desc">No hot water, leaks</span>
               </div>
@@ -993,7 +1268,7 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Leak Detection" data-price-min="950" data-price-max="2200" />
               <div class="svc-card-content">
-                <i class="ti ti-search"></i>
+                <i class="ti ti-search" aria-hidden="true"></i>
                 <span class="svc-title">Leaks</span>
                 <span class="svc-desc">Electronic detection</span>
               </div>
@@ -1001,7 +1276,7 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Drain Clearing" data-price-min="650" data-price-max="1800" />
               <div class="svc-card-content">
-                <i class="ti ti-trash-x"></i>
+                <i class="ti ti-trash-x" aria-hidden="true"></i>
                 <span class="svc-title">Blocked Drain</span>
                 <span class="svc-desc">Clearing &amp; jetting</span>
               </div>
@@ -1009,7 +1284,7 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Bathroom Fitting" data-price-min="0" data-price-max="0" data-custom-quote="true" />
               <div class="svc-card-content">
-                <i class="ti ti-bath"></i>
+                <i class="ti ti-bath" aria-hidden="true"></i>
                 <span class="svc-title">Fitting</span>
                 <span class="svc-desc">Taps, toilets, showers</span>
               </div>
@@ -1017,14 +1292,14 @@
             <label class="svc-card">
               <input type="radio" name="service_type" value="Maintenance" data-price-min="450" data-price-max="950" />
               <div class="svc-card-content">
-                <i class="ti ti-tool"></i>
+                <i class="ti ti-tool" aria-hidden="true"></i>
                 <span class="svc-title">Maintenance</span>
                 <span class="svc-desc">Taps, general repairs</span>
               </div>
             </label>
           </div>
           <div class="wizard-actions">
-            <button type="button" class="btn-p next-step-btn" onclick="goToStep(2)" disabled style="width: 100%;">Continue &nbsp;<i class="ti ti-arrow-right"></i></button>
+            <button type="button" class="btn-p next-step-btn" onclick="goToStep(2)" disabled style="width: 100%;">Continue &nbsp;<i class="ti ti-arrow-right" aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -1061,18 +1336,18 @@
           <!-- Live Estimator Box -->
           <div class="live-estimator-box">
             <div class="estimator-header">
-              <i class="ti ti-calculator"></i>
+              <i class="ti ti-calculator" aria-hidden="true"></i>
               <span>Live Budget Estimator</span>
             </div>
             <div class="estimator-body">
-              <div class="estimated-price" id="estimated-price-display">Select a service...</div>
+              <div class="estimated-price" id="estimated-price-display" aria-live="polite">Select a service...</div>
               <p class="estimator-sub">Estimated range in ZAR (R) based on choices. Excludes parts. Final price verified on-site.</p>
             </div>
           </div>
 
           <div class="wizard-actions">
-            <button type="button" class="btn-s" onclick="goToStep(1)"><i class="ti ti-arrow-left"></i> Back</button>
-            <button type="button" class="btn-p" onclick="goToStep(3)">Continue &nbsp;<i class="ti ti-arrow-right"></i></button>
+            <button type="button" class="btn-s" onclick="goToStep(1)"><i class="ti ti-arrow-left" aria-hidden="true"></i> Back</button>
+            <button type="button" class="btn-p" onclick="goToStep(3)">Continue &nbsp;<i class="ti ti-arrow-right" aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -1080,23 +1355,88 @@
         <div class="wizard-step" data-step="3">
           <h3 class="wizard-step-title">3. Delivery &amp; Contact</h3>
           <div class="fg-row">
-            <div class="fg"><label>First name</label><input type="text" id="wiz-fname" placeholder="John" required /></div>
-            <div class="fg"><label>Last name</label><input type="text" id="wiz-lname" placeholder="Smith" required /></div>
+            <div class="fg"><label for="wiz-fname">First name</label><input type="text" id="wiz-fname" placeholder="John" required /></div>
+            <div class="fg"><label for="wiz-lname">Last name</label><input type="text" id="wiz-lname" placeholder="Smith" required /></div>
           </div>
-          <div class="fg"><label>Phone number</label><input type="tel" id="wiz-phone" placeholder="071 000 0000" required /></div>
-          <div class="fg"><label>Suburb / area</label><input type="text" id="wiz-suburb" placeholder="Menlyn, Garsfontein, Centurion..." required /></div>
-          <div class="fg"><label>Details (optional)</label><textarea id="wiz-details" rows="3" placeholder="Any extra info about the problem..."></textarea></div>
-          
+          <div class="fg"><label for="wiz-phone">Phone number</label><input type="tel" id="wiz-phone" placeholder="071 000 0000" required /></div>
+          <div class="fg"><label for="wiz-suburb">Suburb / area</label><input type="text" id="wiz-suburb" placeholder="Menlyn, Garsfontein, Centurion..." required /></div>
+          <div class="fg"><label for="wiz-details">Details (optional)</label><textarea id="wiz-details" rows="3" placeholder="Any extra info about the problem..."></textarea></div>
+
           <div class="wizard-actions">
-            <button type="button" class="btn-s" onclick="goToStep(2)"><i class="ti ti-arrow-left"></i> Back</button>
-            <button type="submit" class="sub-btn"><i class="ti ti-send"></i> Request Quote Estimator</button>
+            <button type="button" class="btn-s" onclick="goToStep(2)"><i class="ti ti-arrow-left" aria-hidden="true"></i> Back</button>
+            <button type="submit" class="sub-btn"><i class="ti ti-send" aria-hidden="true"></i> Request Quote Estimator</button>
           </div>
-          <p class="form-note"><i class="ti ti-lock" style="font-size:12px"></i> Your details are kept private and never shared</p>
+          <p class="form-note"><i class="ti ti-lock" style="font-size:12px" aria-hidden="true"></i> Your details are kept private and never shared</p>
         </div>
       </form>
     </div>
   </div>
 </section>
+
+<!-- FAQ -->
+<section class="faq reveal" id="faq">
+  <div class="inner">
+    <span class="section-chip">FAQ</span>
+    <h2 class="section-h">Common questions</h2>
+    <p class="section-p">Still unsure? Here's what people usually ask before booking.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you charge a call-out fee?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>No call-out fee during our launch period, even for after-hours emergencies. You'll always see a clear estimate before any work begins.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How fast can a plumber get to me?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>In Pretoria and Centurion, our average response time is under 45 minutes for emergencies, and same-day for standard bookings.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Are your plumbers certified?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>Yes. Every FlowPro plumber is PIRB registered and covered by full public liability insurance.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What areas do you cover?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>We currently service Pretoria Central, Hatfield, Menlyn, Garsfontein, Centurion, Waterkloof, Brooklyn, Faerie Glen, Silverton, and Montana.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you guarantee your work?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>Every job — from a tap washer to a full re-pipe — comes with a 12-month workmanship guarantee.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I get an estimate before booking?
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="faq-answer"><p>Yes — use the estimator above to get an instant budget range, then confirm your booking with one of our plumbers.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA band -->
+<section class="final-cta">
+  <h2>Pipes don't wait for business hours. Neither do we.</h2>
+  <p>Talk to a licensed Pretoria plumber right now.</p>
+  <div class="final-cta-btns">
+    <a href="tel:0120001234" class="btn-p"><i class="ti ti-phone" aria-hidden="true"></i> Call 012 000 1234</a>
+    <a href="#quote" class="btn-s"><i class="ti ti-calculator" aria-hidden="true"></i> Get a free estimate</a>
+  </div>
+</section>
+
+</main>
 
 <!-- Footer -->
 <footer>
@@ -1134,6 +1474,51 @@
     setTheme(newTheme);
   });
 
+  // Mobile menu aria-expanded sync
+  const hamburgerBtn = document.querySelector('.hamburger');
+  const mobMenu = document.getElementById('mob');
+  if (hamburgerBtn && mobMenu) {
+    const obs = new MutationObserver(() => {
+      hamburgerBtn.setAttribute('aria-expanded', mobMenu.classList.contains('open'));
+    });
+    obs.observe(mobMenu, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
   // Multi-step Quote Wizard Logic
   let currentStep = 1;
 
@@ -1163,29 +1548,29 @@
     const selectedService = document.querySelector('input[name="service_type"]:checked');
     const selectedUrgency = document.querySelector('input[name="urgency"]:checked');
     const display = document.getElementById('estimated-price-display');
-    
+
     if (!selectedService) {
       display.textContent = 'Select a service...';
       return;
     }
-    
+
     const isCustom = selectedService.getAttribute('data-custom-quote') === 'true';
     if (isCustom) {
       display.textContent = 'Custom Quote Required';
       return;
     }
-    
+
     const min = parseInt(selectedService.getAttribute('data-price-min'));
     const max = parseInt(selectedService.getAttribute('data-price-max'));
-    
+
     let surcharge = 0;
     if (selectedUrgency) {
       surcharge = parseInt(selectedUrgency.getAttribute('data-surcharge')) || 0;
     }
-    
+
     const totalMin = min + surcharge;
     const totalMax = max + surcharge;
-    
+
     display.textContent = `R ${totalMin} - R ${totalMax}`;
   }
 
@@ -1240,10 +1625,10 @@
     const service = document.querySelector('input[name="service_type"]:checked')?.value;
     const fname = document.getElementById('wiz-fname').value;
     const phone = document.getElementById('wiz-phone').value;
-    
+
     btn.innerHTML = '<i class="ti ti-loader animate-spin"></i> Submitting...';
     btn.disabled = true;
-    
+
     setTimeout(() => {
       const formBox = document.querySelector('.form-box');
       formBox.innerHTML = `
